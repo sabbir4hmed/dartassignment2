@@ -94,6 +94,8 @@ List<Map<String, String>> contacts = [];
     final name = nameContact.text.trim();
     final phone = phoneContact.text.trim();
 
+    String nameHelperText = "Name alreadu exists";
+    String phoneHelperText = "Phone already exists";
 
     if(name.isNotEmpty && phone.isNotEmpty)
     {
@@ -105,17 +107,12 @@ List<Map<String, String>> contacts = [];
             });
       });
 
-      bool contactExists = contacts.any((contact) => contact['name'] == name || contact['phone'] == phone);
-      if(contactExists)
-    {
-
-
     }
       nameContact.clear();
       phoneContact.clear();
     }
   }
-}
+
 
   @override
   Widget build(BuildContext context) {
