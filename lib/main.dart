@@ -24,7 +24,8 @@ class ContactList extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Contact List'),
+          title: Text('Contact List',
+          style: TextStyle(color: Colors.white),),
           centerTitle: true,
           backgroundColor: Colors.blueGrey,
         ),
@@ -89,7 +90,5 @@ final phoneContact = TextEditingController();  List<Map<String, String>> contact
       });
     }
   }
-
-
 }
 
