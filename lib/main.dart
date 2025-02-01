@@ -2,6 +2,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main()
@@ -37,7 +38,7 @@ class ContactList extends State<MyApp> {
                 controller: nameContact,
                 decoration: InputDecoration(labelText: 'Name',
                 border: OutlineInputBorder(),
-                helperText: 'Enter the name of the contact'),
+                    hintText: 'Enter the name of the contact'),
                 keyboardType: TextInputType.text,
               ),
               SizedBox(height: 16),
@@ -45,7 +46,7 @@ class ContactList extends State<MyApp> {
                 controller: phoneContact,
                 decoration: InputDecoration(labelText: 'Phone',
                 border: OutlineInputBorder(),
-                helperText: 'Enter the phone of the contact'),
+                hintText:  'Enter the phone of the contact'),
                 keyboardType: TextInputType.number,
                 cursorColor: Colors.blueGrey,
                 maxLength: 11,
@@ -63,8 +64,22 @@ class ContactList extends State<MyApp> {
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
-              )
+              ),
 
+              SizedBox(height: 16),
+              Expanded(
+                  child: ListView.builder(
+                    itemCount: contacts.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        leading: Icon(Icons.person),
+                        title: Text(contacts[index]['name']!),
+                        subtitle: Text(contacts[index]['phone']!),
+                        trailing: Icon(Icons.call),
+                      );
+                    },
+                  ),
+                ),
             ],
           ),
         ),
@@ -72,12 +87,13 @@ class ContactList extends State<MyApp> {
     );
   }
 final nameContact = TextEditingController();
-final phoneContact = TextEditingController();  List<Map<String, String>> contacts = [];
-
+  final phoneContact = TextEditingController();
+List<Map<String, String>> contacts = [];
   void addContact()
   {
     final name = nameContact.text.trim();
     final phone = phoneContact.text.trim();
+
 
     if(name.isNotEmpty && phone.isNotEmpty)
     {
@@ -88,7 +104,21 @@ final phoneContact = TextEditingController();  List<Map<String, String>> contact
               'phone' : phone
             });
       });
+
+      bool contactExists = contacts.any((contact) => contact['name'] == name || contact['phone'] == phone);
+      if(contactExists)
+    {
+
+
+    }
+      nameContact.clear();
+      phoneContact.clear();
     }
   }
 }
 
+  @override
+  Widget build(BuildContext context) {
+    // Add your App widget implementation here
+    return Container();
+  }
