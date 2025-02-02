@@ -1,6 +1,5 @@
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 void main()
@@ -70,7 +69,10 @@ class ContactList extends State<MyApp> {
                   child: ListView.builder(
                     itemCount: contacts.length,
                     itemBuilder: (context, index) {
-                      return ListTile(
+                      return Column(
+
+                      children: [
+                          ListTile(
                         tileColor: Colors.black12,
                         leading: Icon(Icons.person,
                         color: Colors.brown),
@@ -104,12 +106,16 @@ class ContactList extends State<MyApp> {
                                   },
                                   icon: Icon(Icons.delete),
                                   color: Colors.blue,
-                                )
+                                ),
+
                                 ],
                               );
                             },
                           );
                         },
+                      ),
+                        SizedBox(height: 10),
+                      ]
                       );
                     },
                   ),
@@ -148,9 +154,3 @@ List<Map<String, String>> contacts = [];
     }
   }
 
-
-  @override
-  Widget build(BuildContext context) {
-    // Add your App widget implementation here
-    return Container();
-  }
