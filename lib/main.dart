@@ -26,7 +26,8 @@ class ContactList extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(
           title: Text('Contact List',
-          style: TextStyle(color: Colors.white),),
+          style: TextStyle(color: Colors.white,
+          fontWeight: FontWeight.bold),),
           centerTitle: true,
           backgroundColor: Colors.blueGrey,
         ),
@@ -72,10 +73,13 @@ class ContactList extends State<MyApp> {
                     itemCount: contacts.length,
                     itemBuilder: (context, index) {
                       return ListTile(
-                        leading: Icon(Icons.person),
-                        title: Text(contacts[index]['name']!),
+                        leading: Icon(Icons.person,
+                        color: Colors.brown),
+                        title: Text(contacts[index]['name']!,
+                        style: TextStyle(color: Colors.red)),
                         subtitle: Text(contacts[index]['phone']!),
-                        trailing: Icon(Icons.call),
+                        trailing: Icon(Icons.call,
+                        color:Colors.blue),
                         onLongPress: () {
                           showDialog(
                             context: context,
@@ -85,25 +89,23 @@ class ContactList extends State<MyApp> {
                                 style: TextStyle(fontWeight: FontWeight.bold),),
                                 content: Text('Are you sure for Delete?'),
                                 actions: [
-                                IconButton(onPressed: ()
-                                {
-
-                                  Navigator.pop(context);
-                                },
-                                    icon: Icon(Icons.signal_cellular_no_sim_outlined),
-                                  color: Colors.blue
-                                ),
-
-                                  IconButton(onPressed: ()
-                                      {
-                                        setState(() {
-                                          contacts.removeAt(index);
-                                        });
-                                        Navigator.pop(context);
-                                      },
-                                    icon: Icon(Icons.delete),
+                                IconButton(
+                                  onPressed: () {
+                                    Navigator.pop(context);
+                                  },
+                                  icon: Icon(Icons.signal_cellular_no_sim_outlined),
                                   color: Colors.blue,
-                                  )
+                                ),
+                                IconButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      contacts.removeAt(index);
+                                    });
+                                    Navigator.pop(context);
+                                  },
+                                  icon: Icon(Icons.delete),
+                                  color: Colors.blue,
+                                )
                                 ],
                               );
                             },
