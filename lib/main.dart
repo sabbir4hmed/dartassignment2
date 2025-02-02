@@ -76,6 +76,39 @@ class ContactList extends State<MyApp> {
                         title: Text(contacts[index]['name']!),
                         subtitle: Text(contacts[index]['phone']!),
                         trailing: Icon(Icons.call),
+                        onLongPress: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text('Confirmation',
+                                style: TextStyle(fontWeight: FontWeight.bold),),
+                                content: Text('Are you sure for Delete?'),
+                                actions: [
+                                IconButton(onPressed: ()
+                                {
+
+                                  Navigator.pop(context);
+                                },
+                                    icon: Icon(Icons.signal_cellular_no_sim_outlined),
+                                  color: Colors.blue
+                                ),
+
+                                  IconButton(onPressed: ()
+                                      {
+                                        setState(() {
+                                          contacts.removeAt(index);
+                                        });
+                                        Navigator.pop(context);
+                                      },
+                                    icon: Icon(Icons.delete),
+                                  color: Colors.blue,
+                                  )
+                                ],
+                              );
+                            },
+                          );
+                        },
                       );
                     },
                   ),
@@ -86,6 +119,8 @@ class ContactList extends State<MyApp> {
       ),
     );
   }
+
+
 final nameContact = TextEditingController();
   final phoneContact = TextEditingController();
 List<Map<String, String>> contacts = [];
