@@ -44,7 +44,7 @@ class ContactList extends State<MyApp> {
               SizedBox(height: 16),
               TextField(
                 controller: phoneContact,
-                decoration: InputDecoration(labelText: 'Phone',
+                decoration: InputDecoration(labelText: 'Number',
                 border: OutlineInputBorder(),
                 hintText:  'Enter the phone of the contact'),
                 keyboardType: TextInputType.number,
