@@ -135,9 +135,6 @@ List<Map<String, String>> contacts = [];
     final name = nameContact.text.trim();
     final phone = phoneContact.text.trim();
 
-    String nameHelperText = "Name alreadu exists";
-    String phoneHelperText = "Phone already exists";
-
     if(name.isNotEmpty && phone.isNotEmpty)
     {
       setState(() {
