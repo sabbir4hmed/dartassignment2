@@ -1,6 +1,4 @@
 
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -67,12 +65,13 @@ class ContactList extends State<MyApp> {
                 ),
               ),
 
-              SizedBox(height: 16),
+              SizedBox(height: 26),
               Expanded(
                   child: ListView.builder(
                     itemCount: contacts.length,
                     itemBuilder: (context, index) {
                       return ListTile(
+                        tileColor: Colors.black12,
                         leading: Icon(Icons.person,
                         color: Colors.brown),
                         title: Text(contacts[index]['name']!,
@@ -121,7 +120,6 @@ class ContactList extends State<MyApp> {
       ),
     );
   }
-
 
 final nameContact = TextEditingController();
   final phoneContact = TextEditingController();
